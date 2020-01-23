@@ -1,3 +1,4 @@
+// Factorial
 var factorial = function(number) {
   if (number === 0 || number === 1) {
     return 1;
@@ -10,6 +11,7 @@ var factorial = function(number) {
   }
 };
 
+// Palindrome Check
 var palindromeCheck = function(string) {
   var characters = string.split("");
   //console.log(characters);
@@ -35,73 +37,29 @@ var palindromeCheck = function(string) {
   }
 }
 
-
-
+// Prime Sifting
 var primeCheck = function(number) {
   var list = [];
   for (var i = 2; i <= number; i++) {
     list.push(i);
   }
+  // console.log(list);
+
+  for (var prime = 2; prime <= number; prime++) {
+    // console.log("prime = " + prime)
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] % prime === 0) {
+        if (list[i] === prime) {
+          // do nothing
+        } else {
+          list.splice(i, 1);
+        }
+      }
+    }
+    // console.log(list);
+  }
   console.log(list);
-
-
-  // //for (var prime = 2; prime <= number; prime = primeList[primeList.length-1]) {
-  //   for (var j = 0; j <= number; j++){
-  //     for (var i = 0; i < list.length; i++) {
-  //       if (list[i] % prime != 0) {
-  //         editedList.push(list[i]);
-  //       }
-  //     }  
-  //   prime = editedlist[j];
-  //   console.log(prime);
-  //   list = editedList;
-  //   console.log(list);
-  //   primeList.push(prime);
-  // }
-  
-  // console.log(primeList);
-  // console.log(editedList);
-
-      var prime = 2;
-      var editedList = [];
-      for (var i = 0; i < list.length; i++) {
-        if (list[i] % prime != 0) {
-          editedList.push(list[i]);
-        }
-      }
-      var primeList = [prime];
-
-      prime = 3;
-      var editedList2 = [];
-      for (var i = 0; i < editedList.length; i++) {
-        if (editedList[i] % prime != 0) {
-          editedList2.push(editedList[i]);
-        }
-      }
-      primeList.push(prime);
-
-      prime = 5;
-      var editedList3 = [];
-      for (var i = 0; i < editedList2.length; i++) {
-        if (editedList2[i] % prime != 0) {
-          editedList3.push(editedList2[i]);
-        }
-      }
-      primeList.push(prime);
-
-      prime = 7;
-      var editedList4 = [];
-      for (var i = 0; i < editedList3.length; i++) {
-        if (editedList3[i] % prime != 0) {
-          editedList4.push(editedList3[i]);
-        }
-      }
-      primeList.push(prime);
-  
-  console.log(primeList);
-  console.log(editedList4);
-
-
+  return list;
 }
 
 
@@ -182,14 +140,12 @@ $(document).ready(function() {
   })
 
 
-  //Prime Sifting
+  // Prime Sifting
   $("#primeForm").submit(function(event) {
     event.preventDefault();
     var primeInput = $("#primeInput").val();
     
     $("#primeOutput").text(primeCheck(primeInput));
-
   });
 
-
-})
+});
