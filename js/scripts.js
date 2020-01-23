@@ -48,16 +48,28 @@ var primeCheck = function(number) {
   for (var prime = 2; prime <= number; prime++) {
     // console.log("prime = " + prime)
     for (var i = 0; i < list.length; i++) {
-      if (list[i] % prime === 0) {
-        if (list[i] === prime) {
-          // do nothing
-        } else {
-          list.splice(i, 1);
-        }
+      if ((list[i] % prime === 0) && (list[i] != prime)) {
+        list.splice(i, 1);
       }
     }
     // console.log(list);
   }
+
+  // Code below has an empty if statement -- bad code(?)
+  // for (var prime = 2; prime <= number; prime++) {
+  //   // console.log("prime = " + prime)
+  //   for (var i = 0; i < list.length; i++) {
+  //     if (list[i] % prime === 0) {
+  //       if (list[i] === prime) {
+  //         // do nothing
+  //       } else {
+  //         list.splice(i, 1);
+  //       }
+  //     }
+  //   }
+  //   // console.log(list);
+  // }
+
   console.log(list);
   return list;
 }
